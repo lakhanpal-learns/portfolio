@@ -1,4 +1,4 @@
-import type { About } from "@/types";
+import type { About, SidebarItem } from "@/types";
 
 export const about: About = {
   name: "Lakhanpal",
@@ -7,8 +7,7 @@ export const about: About = {
 
   location: "Punjab, India",
 
-  bio:
-    "Computer Science student focused on Data Analytics, Data Engineering, SQL, Python, Power BI, and building production-ready data projects.",
+  bio: "Computer Science student focused on Data Analytics, Data Engineering, SQL, Python, Power BI, and building production-ready data projects.",
 
   focus: [
     "Data Analytics",
@@ -23,9 +22,39 @@ export const about: About = {
     "Open Source",
     "System Design",
   ],
+
+  skills: {
+    languages: [
+      "Python",
+      "SQL",
+      "JavaScript",
+      "TypeScript",
+    ],
+
+    analytics: [
+      "Power BI",
+      "Excel",
+      "Pandas",
+      "NumPy",
+    ],
+
+    engineering: [
+      "PostgreSQL",
+      "Docker",
+      "ETL",
+      "Git",
+    ],
+
+    frontend: [
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "shadcn/ui",
+    ],
+  },
 };
 
-export const aboutSidebar = [
+export const aboutSidebar: SidebarItem[] = [
   {
     id: "information",
     label: "Information",
@@ -42,4 +71,12 @@ export const aboutSidebar = [
     id: "goals",
     label: "Goals",
   },
+  {
+  id: "focus",
+  label: "Focus Areas",
+},
+{
+  id: "interests",
+  label: "Interests",
+},
 ];
