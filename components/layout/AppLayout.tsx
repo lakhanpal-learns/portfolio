@@ -6,19 +6,14 @@ type AppLayoutProps = {
   children: ReactNode;
 };
 
-const styles = {
-  wrapper: "min-h-screen bg-background",
-  content: "mx-auto flex max-w-7xl",
-};
-
 export default function AppLayout({
   children,
 }: AppLayoutProps) {
   return (
-    <div className={styles.wrapper}>
+    <div className="min-h-screen bg-background">
       <Header />
 
-      <div className={styles.content}>
+      <div className="mx-auto flex max-w-7xl">
         {children}
       </div>
     </div>

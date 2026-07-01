@@ -1,35 +1,28 @@
-const styles = {
-  section: "space-y-8 py-24",
-  heading: "text-3xl font-bold",
-  card: "rounded-xl border p-6",
-  degree: "text-xl font-semibold",
-  university: "mt-2 text-muted-foreground",
-  duration: "mt-1 text-sm text-muted-foreground",
-};
+import Card from "@/components/shared/Cards";
+import Container from "@/components/shared/Container";
+import Section from "@/components/shared/Section";
+import SectionTitle from "@/components/shared/SectionTitle";
 
 export default function Education() {
   return (
-    <section
-      id="education"
-      className={styles.section}
-    >
-      <h2 className={styles.heading}>
-        Education
-      </h2>
+    <Section id="education">
+      <Container>
+        <SectionTitle>Education</SectionTitle>
 
-      <div className={styles.card}>
-        <h3 className={styles.degree}>
-          Bachelor of Technology
-        </h3>
+        <Card>
+          <h3 className="text-xl font-semibold">
+            Bachelor of Technology
+          </h3>
 
-        <p className={styles.university}>
-          Computer Science & Engineering
-        </p>
+          <p className="mt-2 text-muted-foreground">
+            Computer Science & Engineering
+          </p>
 
-        <p className={styles.duration}>
-          GNA University • 2024 – Present
-        </p>
-      </div>
-    </section>
+          <p className="mt-1 text-sm text-muted-foreground">
+            GNA University • 2024 – Present
+          </p>
+        </Card>
+      </Container>
+    </Section>
   );
 }

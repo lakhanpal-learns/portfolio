@@ -2,33 +2,32 @@
 
 import Link from "next/link";
 
+import { useActiveSection } from "@/hooks/useActiveSection";
 import type { SidebarItem } from "@/types";
 
-type SidebarNavigationProps = {
+type Props = {
   items: SidebarItem[];
-};
-
-const styles = {
-  aside:
-    "sticky top-16 hidden h-[calc(100vh-4rem)] w-64 shrink-0 border-r lg:block",
-
-  nav: "flex flex-col gap-2 p-6",
-
-  link:
-    "rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
 };
 
 export default function SidebarNavigation({
   items,
-}: SidebarNavigationProps) {
+}: Props) {
+  const activeSection = useActiveSection(
+    items.map((item) => item.id)
+  );
+
   return (
-    <aside className={styles.aside}>
-      <nav className={styles.nav}>
+    <aside className="sticky top-16 hidden h-[calc(100vh-64px)] w-64 shrink-0 border-r bg-background lg:block">
+      <nav className="flex flex-col gap-1 p-6">
         {items.map((item) => (
           <Link
             key={item.id}
             href={`#${item.id}`}
-            className={styles.link}
+            className={`rounded-lg px-4 py-2 text-sm transition-all ${
+              activeSection === item.id
+                ? "bg-foreground text-background"
+                : "text-muted-foreground hover:bg-muted"
+            }`}
           >
             {item.label}
           </Link>

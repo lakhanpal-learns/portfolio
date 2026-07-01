@@ -1,28 +1,26 @@
 import { about } from "@/content";
 
-const styles = {
-  section: "space-y-8 py-24",
-  heading: "text-3xl font-bold",
-  wrapper: "flex flex-wrap gap-3",
-  badge:
-    "rounded-full border px-4 py-2 text-sm font-medium transition-colors hover:bg-muted",
-};
+import Container from "@/components/shared/Container";
+import Section from "@/components/shared/Section";
+import SectionTitle from "@/components/shared/SectionTitle";
 
 export default function Interests() {
   return (
-    <section id="interests" className={styles.section}>
-      <h2 className={styles.heading}>Interests</h2>
+    <Section id="interests">
+      <Container>
+        <SectionTitle>Interests</SectionTitle>
 
-      <div className={styles.wrapper}>
-        {about.interests.map((interest) => (
-          <span
-            key={interest}
-            className={styles.badge}
-          >
-            {interest}
-          </span>
-        ))}
-      </div>
-    </section>
+        <div className="flex flex-wrap gap-3">
+          {about.interests.map((interest) => (
+            <span
+              key={interest}
+              className="rounded-full border px-4 py-2 text-sm font-medium transition-all hover:bg-foreground hover:text-background"
+            >
+              {interest}
+            </span>
+          ))}
+        </div>
+      </Container>
+    </Section>
   );
 }

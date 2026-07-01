@@ -4,15 +4,11 @@ type PageContainerProps = {
   children: ReactNode;
 };
 
-const styles = {
-  container: "flex-1 px-6 py-10",
-};
-
 export default function PageContainer({
   children,
 }: PageContainerProps) {
   return (
-    <main className={styles.container}>
+    <main className="flex-1 px-8 py-10 lg:px-14">
       {children}
     </main>
   );

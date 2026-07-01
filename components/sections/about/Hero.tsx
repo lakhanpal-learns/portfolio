@@ -1,32 +1,44 @@
-import { about } from "@/content";
+import { ArrowRight } from "lucide-react";
 
-const styles = {
-  wrapper: "space-y-6",
-  badge:
-    "inline-flex rounded-full border px-3 py-1 text-sm text-muted-foreground",
-  title: "text-5xl font-bold tracking-tight",
-  description: "max-w-2xl text-lg text-muted-foreground leading-8",
-};
+import { about } from "@/content";
+import { Button } from "@/components/ui/button";
+import Container from "@/components/shared/Container";
+import Section from "@/components/shared/Section";
 
 export default function Hero() {
   return (
-    <section
-      id="information"
-      className="flex min-h-[calc(100vh-4rem)] items-center"
-    >
-      <div className={styles.wrapper}>
-        <span className={styles.badge}>
-          Open to Internships
-        </span>
+    <Section id="information">
+      <Container>
+        <div className="flex min-h-[80vh] items-center">
+          <div className="max-w-4xl space-y-8">
+            <span className="inline-flex rounded-full border px-4 py-2 text-sm text-muted-foreground">
+              Open to Internships • Data Analytics • Data Engineering
+            </span>
 
-        <h1 className={styles.title}>
-          Hi, I'm {about.name}
-        </h1>
+            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+              Hi, I'm{" "}
+              <span className="text-primary">
+                {about.name}
+              </span>
+            </h1>
 
-        <p className={styles.description}>
-          {about.bio}
-        </p>
-      </div>
-    </section>
+            <p className="max-w-3xl text-lg leading-8 text-muted-foreground">
+              {about.bio}
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg">
+                View Projects
+                <ArrowRight className="ml-2 size-4" />
+              </Button>
+
+              <Button variant="outline" size="lg">
+                Download Resume
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
   );
 }
