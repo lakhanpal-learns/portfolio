@@ -8,7 +8,7 @@ export default function SectionTitle({
   children,
 }: SectionTitleProps) {
   return (
-    <h2 className="mb-10 text-3xl font-bold tracking-tight">
+    <h2 className="mb-8 text-2xl font-semibold tracking-tight sm:mb-10 sm:text-3xl lg:text-4xl">
       {children}
     </h2>
   );

@@ -33,20 +33,22 @@ export default function Skills() {
         <div className="grid gap-6 md:grid-cols-2">
           {categories.map((category) => (
             <Card key={category.title}>
-              <h3 className="mb-4 text-lg font-semibold">
-                {category.title}
-              </h3>
+              <div className="space-y-5">
+                <h3 className="text-xl font-semibold tracking-tight">
+                  {category.title}
+                </h3>
 
-              <ul className="space-y-2">
-                {category.skills.map((skill) => (
-                  <li
-                    key={skill}
-                    className="text-muted-foreground"
-                  >
-                    • {skill}
-                  </li>
-                ))}
-              </ul>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="rounded-md border border-border bg-muted/40 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </Card>
           ))}
         </div>

@@ -9,31 +9,31 @@ export default function Hero() {
   return (
     <Section id="information">
       <Container>
-        <div className="flex min-h-[80vh] items-center">
-          <div className="max-w-4xl space-y-8">
+        <div className="flex min-h-[70vh] items-center">
+          <div className="max-w-3xl space-y-6">
             <span className="inline-flex rounded-full border px-4 py-2 text-sm text-muted-foreground">
-              Open to Internships • Data Analytics • Data Engineering
+              {about.hero.badge}
             </span>
 
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-              Hi, I'm{" "}
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+              {about.hero.greeting}{" "}
               <span className="text-primary">
-                {about.name}
+                {about.hero.name}
               </span>
             </h1>
 
-            <p className="max-w-3xl text-lg leading-8 text-muted-foreground">
-              {about.bio}
+            <p className="max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg">
+              {about.hero.bio}
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3 pt-2">
               <Button size="lg">
-                View Projects
-                <ArrowRight className="ml-2 size-4" />
+                {about.hero.primaryButton}
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
 
               <Button variant="outline" size="lg">
-                Download Resume
+                {about.hero.secondaryButton}
               </Button>
             </div>
           </div>

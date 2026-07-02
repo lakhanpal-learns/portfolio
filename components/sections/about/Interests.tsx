@@ -1,5 +1,8 @@
+import { Heart } from "lucide-react";
+
 import { about } from "@/content";
 
+import Card from "@/components/shared/Cards";
 import Container from "@/components/shared/Container";
 import Section from "@/components/shared/Section";
 import SectionTitle from "@/components/shared/SectionTitle";
@@ -10,14 +13,25 @@ export default function Interests() {
       <Container>
         <SectionTitle>Interests</SectionTitle>
 
-        <div className="flex flex-wrap gap-3">
+        <div className="grid gap-6 sm:grid-cols-2">
           {about.interests.map((interest) => (
-            <span
-              key={interest}
-              className="rounded-full border px-4 py-2 text-sm font-medium transition-all hover:bg-foreground hover:text-background"
-            >
-              {interest}
-            </span>
+            <Card key={interest.title}>
+              <div className="flex items-start gap-4">
+                <div className="rounded-lg border border-border bg-muted/40 p-3">
+                  <Heart className="h-5 w-5" />
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {interest.title}
+                  </h3>
+
+                  <p className="text-sm leading-6 text-muted-foreground">
+                    {interest.description}
+                  </p>
+                </div>
+              </div>
+            </Card>
           ))}
         </div>
       </Container>

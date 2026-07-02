@@ -1,3 +1,5 @@
+import { about } from "@/content";
+
 import Card from "@/components/shared/Cards";
 import Container from "@/components/shared/Container";
 import Section from "@/components/shared/Section";
@@ -10,17 +12,31 @@ export default function Education() {
         <SectionTitle>Education</SectionTitle>
 
         <Card>
-          <h3 className="text-xl font-semibold">
-            Bachelor of Technology
-          </h3>
+          <div className="space-y-5">
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">
+                {about.education.duration}
+              </p>
 
-          <p className="mt-2 text-muted-foreground">
-            Computer Science & Engineering
-          </p>
+              <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                {about.education.degree}
+              </h3>
 
-          <p className="mt-1 text-sm text-muted-foreground">
-            GNA University • 2024 – Present
-          </p>
+              <p className="mt-2 text-base text-muted-foreground">
+                {about.education.field}
+              </p>
+            </div>
+
+            <div className="border-t pt-5">
+              <div className="flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+                <span>{about.education.university}</span>
+
+                <span>{about.education.graduation}</span>
+
+                <span>{about.education.cgpa}</span>
+              </div>
+            </div>
+          </div>
         </Card>
       </Container>
     </Section>
