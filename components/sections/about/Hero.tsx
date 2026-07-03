@@ -1,15 +1,16 @@
 import { ArrowRight } from "lucide-react";
 
 import { about } from "@/content";
-import { Button } from "@/components/ui/button";
 import Container from "@/components/shared/Container";
 import Section from "@/components/shared/Section";
+import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
     <Section id="information">
       <Container>
-        <div className="flex min-h-[70vh] items-center">
+        <div className="grid min-h-[75vh] items-center gap-16 lg:grid-cols-2">
+          {/* Left Side */}
           <div className="max-w-3xl space-y-6">
             <span className="inline-flex rounded-full border px-4 py-2 text-sm text-muted-foreground">
               {about.hero.badge}
@@ -37,6 +38,11 @@ export default function Hero() {
               </Button>
             </div>
           </div>
+
+          {/* Right Side */}
+          {/* <div className="hidden lg:flex items-center justify-center">
+            <AnimatedGuide />
+          </div> */}
         </div>
       </Container>
     </Section>

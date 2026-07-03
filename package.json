@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@rive-app/react-canvas": "^4.29.4",
     "@tabler/icons-react": "^3.44.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
