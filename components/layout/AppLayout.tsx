@@ -13,7 +13,7 @@ export default function AppLayout({
     <div className="min-h-screen bg-background">
       <Header />
 
-      <div className="mx-auto flex max-w-7xl">
+      <div className="mx-auto flex w-full max-w-[1800px]">
         {children}
       </div>
     </div>
