@@ -11,7 +11,14 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   const [characterState, setCharacterState] = useState<
-    "idle" | "thumbsUp"
+    | "idle"
+    | "thumbsUp"
+    | "resume"
+    | "thinking"
+    | "laptop"
+    | "dashboard"
+    | "goodbye"
+    | "wave"
   >("idle");
 
   return (
@@ -47,6 +54,7 @@ export default function Hero() {
               <Button
                 variant="outline"
                 size="lg"
+                onMouseEnter={() => setCharacterState("resume")}
                 onMouseLeave={() => setCharacterState("idle")}
               >
                 {about.hero.secondaryButton}
@@ -54,7 +62,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="hidden h-[760px] items-center justify-end pr+2 lg:flex">
+          <div className="hidden h-[760px] items-center justify-end pr-2 lg:flex">
             <HeroCharacter state={characterState} />
           </div>
         </div>

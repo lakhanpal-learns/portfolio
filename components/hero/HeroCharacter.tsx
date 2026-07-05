@@ -4,19 +4,36 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 
 type HeroCharacterProps = {
-  state: "idle" | "thumbsUp";
+  state:
+    | "idle"
+    | "thumbsUp"
+    | "resume"
+    | "thinking"
+    | "laptop"
+    | "dashboard"
+    | "goodbye"
+    | "wave";
+};
+
+const characterImages = {
+  idle: "/images/character/idle.png",
+  thumbsUp: "/images/character/thumbs-up.png",
+  resume: "/images/character/resume.png",
+  thinking: "/images/character/thinking.png",
+  laptop: "/images/character/laptop.png",
+  dashboard: "/images/character/dashboard.png",
+  goodbye: "/images/character/goodbye.png",
+  wave: "/images/character/wave.png",
 };
 
 export default function HeroCharacter({
   state,
 }: HeroCharacterProps) {
-  const image =
-    state === "thumbsUp"
-      ? "/images/character/thumbs-up.png"
-      : "/images/character/idle.png";
+  const image = characterImages[state];
 
   return (
     <div className="relative flex h-[760px] w-full items-center justify-end">
+      {/* Background Glow */}
       <div className="absolute right-0 h-[760px] w-[760px] rounded-full bg-muted/15 blur-3xl" />
 
       <AnimatePresence mode="wait">
@@ -29,7 +46,10 @@ export default function HeroCharacter({
             y: [0, -8, 0],
             rotate: [0, 1, 0, -1, 0],
           }}
-          exit={{ opacity: 0, scale: 0.96 }}
+          exit={{
+            opacity: 0,
+            scale: 0.96,
+          }}
           transition={{
             opacity: { duration: 0.25 },
             scale: { duration: 0.25 },
@@ -44,15 +64,15 @@ export default function HeroCharacter({
               ease: "easeInOut",
             },
           }}
-          className="relative z-10 translate-x-60"
+          className="relative z-10 translate-x-56"
         >
           <Image
             src={image}
             alt="Portfolio Character"
-            width={550}
-            height={650}
+            width={760}
+            height={760}
             priority
-            className="h-auto w-[720px] max-w-none select-none object-contain"
+            className="h-auto w-[720px] max-w-none object-contain select-none pointer-events-none"
           />
         </motion.div>
       </AnimatePresence>
