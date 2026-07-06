@@ -34,7 +34,7 @@ export const projects: Project[] = [
       "Power BI",
     ],
 
-    image: "/images/projects/credit-risk-cover.png",
+    image: "/images/projects/ChatGPT Image Jun 26, 2026, 01_09_58 PM.png",
 
     github: "#",
 

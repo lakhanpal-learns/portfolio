@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowRight,
+  Calendar,
+  Circle,
+} from "lucide-react";
 
 import type { Project } from "@/types/project";
 
@@ -16,63 +20,81 @@ export default function ProjectCard({
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group block"
+      className="group block h-full"
     >
-      <article className="overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl">
-        <div className="relative aspect-[16/9] overflow-hidden border-b border-border bg-muted">
+      <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all duration-300 hover:-translate-y-2 hover:border-foreground/20 hover:shadow-2xl">
+        {/* Cover */}
+        <div className="relative aspect-[16/10] overflow-hidden">
           <Image
             src={project.image}
             alt={project.title}
             fill
+            priority
             className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width:768px) 100vw, (max-width:1280px) 50vw, 33vw"
+            sizes="(max-width:768px) 100vw,
+                   (max-width:1200px) 50vw,
+                   33vw"
           />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
 
-        <div className="space-y-5 p-6">
-          <div className="flex items-center justify-between">
-            <span className="rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
-              {project.category}
-            </span>
+        {/* Content */}
+        <div className="flex flex-1 flex-col p-7">
+          {/* Category */}
+          <span className="mb-5 inline-flex w-fit rounded-full border border-border px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            {project.category}
+          </span>
 
-            <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </div>
+          {/* Title */}
+          <h3 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-foreground">
+            {project.title}
+          </h3>
 
-          <div>
-            <h3 className="text-2xl font-semibold tracking-tight">
-              {project.title}
-            </h3>
+          {/* Description */}
+          <p className="mt-4 line-clamp-3 text-[15px] leading-7 text-muted-foreground">
+            {project.description}
+          </p>
 
-            <p className="mt-3 line-clamp-2 text-sm leading-7 text-muted-foreground">
-              {project.description}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
+          {/* Tech */}
+          <div className="mt-6 flex flex-wrap gap-2">
             {project.technologies.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md bg-muted px-3 py-1 text-xs font-medium"
+                className="rounded-lg border border-border bg-muted/40 px-3 py-1.5 text-xs font-medium transition-colors group-hover:bg-muted"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center justify-between border-t border-border pt-4">
-            <span
-              className={`rounded-full px-3 py-1 text-xs font-medium ${
-                project.status === "Completed"
-                  ? "bg-black text-white dark:bg-white dark:text-black"
-                  : "border border-border"
-              }`}
-            >
-              {project.status}
-            </span>
+          {/* Footer */}
+          <div className="mt-auto pt-8">
+            <div className="flex items-center justify-between border-t border-border pt-5">
+              <div className="flex items-center gap-5">
+                <span className="inline-flex items-center gap-2 text-sm font-medium">
+                  <Circle
+                    className={`h-2.5 w-2.5 fill-current ${
+                      project.status === "Completed"
+                        ? "text-green-500"
+                        : "text-amber-500"
+                    }`}
+                  />
 
-            <span className="text-sm text-muted-foreground">
-              {project.year}
-            </span>
+                  {project.status}
+                </span>
+
+                <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                  <Calendar className="h-4 w-4" />
+
+                  {project.year}
+                </span>
+              </div>
+
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border transition-all duration-300 group-hover:bg-foreground group-hover:text-background">
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </div>
+            </div>
           </div>
         </div>
       </article>

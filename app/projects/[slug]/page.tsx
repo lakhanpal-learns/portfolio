@@ -55,13 +55,14 @@ export default async function ProjectDetailsPage({
             </div>
           </div>
 
-          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-border">
+          <div className="overflow-hidden rounded-2xl border border-border bg-white">
             <Image
               src={project.image}
               alt={project.title}
-              fill
+              width={1600}
+              height={900}
               priority
-              className="object-cover"
+              className="h-auto w-full"
             />
           </div>
 
