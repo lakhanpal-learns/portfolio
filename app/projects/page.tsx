@@ -13,35 +13,74 @@ export default function ProjectsPage() {
   const [activeFilter, setActiveFilter] =
     useState("All Projects");
 
+  const [sortOrder, setSortOrder] = useState<
+    "latest" | "oldest"
+  >("latest");
+
+  const [search, setSearch] = useState("");
+
   const filteredProjects = useMemo(() => {
-    if (activeFilter === "All Projects") {
-      return projects;
+    let result = [...projects];
+
+    // Category
+    if (activeFilter !== "All Projects") {
+      result = result.filter((project) => {
+        switch (activeFilter) {
+          case "Data Engineering":
+            return project.category === "Data Engineering";
+
+          case "Analytics":
+            return project.category === "Analytics";
+
+          case "SQL":
+            return (
+              project.category === "SQL" ||
+              project.title.toLowerCase().includes("sql")
+            );
+
+          case "Dashboarding":
+            return project.technologies.some((tech) =>
+              tech.toLowerCase().includes("power bi")
+            );
+
+          default:
+            return true;
+        }
+      });
     }
 
-    return projects.filter((project) => {
-      switch (activeFilter) {
-        case "Data Engineering":
-          return project.category === "Data Engineering";
+    // Search
+    if (search.trim()) {
+      const query = search.toLowerCase();
 
-        case "Analytics":
-          return project.category === "Analytics";
+      result = result.filter((project) => {
+        return (
+          project.title.toLowerCase().includes(query) ||
+          project.description
+            .toLowerCase()
+            .includes(query) ||
+          project.category
+            .toLowerCase()
+            .includes(query) ||
+          project.technologies.some((tech) =>
+            tech.toLowerCase().includes(query)
+          )
+        );
+      });
+    }
 
-        case "SQL":
-          return (
-            project.category === "SQL" ||
-            project.title.toLowerCase().includes("sql")
-          );
+    // Sort
+    result.sort((a, b) => {
+      const yearA = Number(a.year);
+      const yearB = Number(b.year);
 
-        case "Dashboarding":
-          return project.technologies.some((tech) =>
-            tech.toLowerCase().includes("power bi")
-          );
-
-        default:
-          return true;
-      }
+      return sortOrder === "latest"
+        ? yearB - yearA
+        : yearA - yearB;
     });
-  }, [activeFilter]);
+
+    return result;
+  }, [activeFilter, sortOrder, search]);
 
   return (
     <main className="pb-20">
@@ -51,11 +90,13 @@ export default function ProjectsPage() {
         <ProjectFilters
           activeFilter={activeFilter}
           setActiveFilter={setActiveFilter}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
+          search={search}
+          setSearch={setSearch}
         />
 
-        <ProjectsGrid
-          projects={filteredProjects}
-        />
+        <ProjectsGrid projects={filteredProjects} />
 
         <ProjectCTA />
       </div>

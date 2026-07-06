@@ -10,10 +10,19 @@ export interface Project {
   category: string;
 
   description: string;
+  overview: string;
+
   businessProblem: string;
+  solution: string;
+  architecture: string;
 
   keyFeatures: string[];
   technologies: string[];
+
+  challenges: string[];
+  futureImprovements: string[];
+
+  screenshots: string[];
 
   image: string;
 
