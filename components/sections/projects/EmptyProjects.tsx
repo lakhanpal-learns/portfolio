@@ -1,26 +1,39 @@
-import { FolderOpen } from "lucide-react";
+"use client";
 
-import Container from "@/components/shared/Container";
+import { SearchX } from "lucide-react";
 
-export default function EmptyProjects() {
+type Props = {
+  clearFilters: () => void;
+};
+
+export default function EmptyProjects({
+  clearFilters,
+}: Props) {
   return (
-    <section className="py-24">
-      <Container>
-        <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-border bg-card px-8 py-20 text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full border border-border bg-muted">
-            <FolderOpen className="h-8 w-8 text-muted-foreground" />
+    <section className="py-20">
+      <div className="mx-auto max-w-2xl">
+        <div className="rounded-3xl border border-dashed border-border bg-card px-8 py-16 text-center">
+          <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-muted">
+            <SearchX className="h-10 w-10 text-muted-foreground" />
           </div>
 
-          <h2 className="text-3xl font-semibold tracking-tight">
+          <h2 className="text-3xl font-bold tracking-tight">
             No Projects Found
           </h2>
 
-          <p className="mt-4 max-w-lg text-lg leading-8 text-muted-foreground">
-            There are currently no projects available for this category.
-            Try selecting another filter or check back later for new work.
+          <p className="mx-auto mt-4 max-w-lg text-lg leading-8 text-muted-foreground">
+            No projects match your current search or selected
+            category.
           </p>
+
+          <button
+            onClick={clearFilters}
+            className="mt-8 rounded-xl bg-black px-6 py-3 text-sm font-medium text-white transition hover:opacity-90 dark:bg-white dark:text-black"
+          >
+            Clear Filters
+          </button>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

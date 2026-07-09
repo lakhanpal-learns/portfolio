@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 
@@ -43,22 +43,31 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-3 pt-2">
               <Button
-                size="lg"
-                onMouseEnter={() => setCharacterState("thumbsUp")}
-                onMouseLeave={() => setCharacterState("idle")}
-              >
-                {about.hero.primaryButton}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+                    asChild
+                    size="lg"
+                    onMouseEnter={() => setCharacterState("thumbsUp")}
+                    onMouseLeave={() => setCharacterState("idle")}
+                  >
+                    <Link href="/projects">
+                      {about.hero.primaryButton}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
 
               <Button
-                variant="outline"
-                size="lg"
-                onMouseEnter={() => setCharacterState("resume")}
-                onMouseLeave={() => setCharacterState("idle")}
-              >
-                {about.hero.secondaryButton}
-              </Button>
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  onMouseEnter={() => setCharacterState("resume")}
+                  onMouseLeave={() => setCharacterState("idle")}
+                >
+                  <a
+                    href="/resume/Lakhanpal_Resume.pdf"
+                    download
+                  >
+                    {about.hero.secondaryButton}
+                  </a>
+                </Button>
             </div>
           </div>
 

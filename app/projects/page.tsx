@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 
 import { projects } from "@/content/projects";
 
@@ -10,8 +11,14 @@ import ProjectsGrid from "@/components/sections/projects/ProjectsGrid";
 import ProjectCTA from "@/components/sections/projects/ProjectCTA";
 
 export default function ProjectsPage() {
-  const [activeFilter, setActiveFilter] =
-    useState("All Projects");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const initialCategory =
+    searchParams.get("category") || "All Projects";
+
+  const [activeFilter, setActiveFilterState] =
+    useState(initialCategory);
 
   const [sortOrder, setSortOrder] = useState<
     "latest" | "oldest"
@@ -19,15 +26,44 @@ export default function ProjectsPage() {
 
   const [search, setSearch] = useState("");
 
+  const clearFilters = () => {
+  setActiveFilter("All Projects");
+  setSearch("");
+  setSortOrder("latest");
+
+  router.replace("/projects", {
+    scroll: false,
+  });
+};
+
+  function setActiveFilter(value: string) {
+    setActiveFilterState(value);
+
+    const params = new URLSearchParams(
+      searchParams.toString()
+    );
+
+    if (value === "All Projects") {
+      params.delete("category");
+    } else {
+      params.set("category", value);
+    }
+
+    router.replace(`/projects?${params.toString()}`, {
+      scroll: false,
+    });
+  }
+
   const filteredProjects = useMemo(() => {
     let result = [...projects];
 
-    // Category
     if (activeFilter !== "All Projects") {
       result = result.filter((project) => {
         switch (activeFilter) {
           case "Data Engineering":
-            return project.category === "Data Engineering";
+            return (
+              project.category === "Data Engineering"
+            );
 
           case "Analytics":
             return project.category === "Analytics";
@@ -35,12 +71,16 @@ export default function ProjectsPage() {
           case "SQL":
             return (
               project.category === "SQL" ||
-              project.title.toLowerCase().includes("sql")
+              project.title
+                .toLowerCase()
+                .includes("sql")
             );
 
           case "Dashboarding":
             return project.technologies.some((tech) =>
-              tech.toLowerCase().includes("power bi")
+              tech
+                .toLowerCase()
+                .includes("power bi")
             );
 
           default:
@@ -49,7 +89,6 @@ export default function ProjectsPage() {
       });
     }
 
-    // Search
     if (search.trim()) {
       const query = search.toLowerCase();
 
@@ -69,7 +108,6 @@ export default function ProjectsPage() {
       });
     }
 
-    // Sort
     result.sort((a, b) => {
       const yearA = Number(a.year);
       const yearB = Number(b.year);
@@ -81,6 +119,30 @@ export default function ProjectsPage() {
 
     return result;
   }, [activeFilter, sortOrder, search]);
+
+  const filterCounts = {
+    "All Projects": projects.length,
+
+    "Data Engineering": projects.filter(
+      (p) => p.category === "Data Engineering"
+    ).length,
+
+    Analytics: projects.filter(
+      (p) => p.category === "Analytics"
+    ).length,
+
+    SQL: projects.filter(
+      (p) =>
+        p.category === "SQL" ||
+        p.title.toLowerCase().includes("sql")
+    ).length,
+
+    Dashboarding: projects.filter((p) =>
+      p.technologies.some((tech) =>
+        tech.toLowerCase().includes("power bi")
+      )
+    ).length,
+  };
 
   return (
     <main className="pb-20">
@@ -94,9 +156,14 @@ export default function ProjectsPage() {
           setSortOrder={setSortOrder}
           search={search}
           setSearch={setSearch}
+          filterCounts={filterCounts}
+          totalProjects={filteredProjects.length}
         />
 
-        <ProjectsGrid projects={filteredProjects} />
+       <ProjectsGrid
+          projects={filteredProjects}
+          clearFilters={clearFilters}
+        />
 
         <ProjectCTA />
       </div>
