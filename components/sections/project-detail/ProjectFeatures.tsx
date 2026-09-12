@@ -9,7 +9,10 @@ type Props = {
 
 export default function ProjectFeatures({ section }: Props) {
   return (
-    <section className="border-t border-border pt-16">
+    <section
+  id={section.id}
+  className="border-t border-border pt-16"
+>
       <div className="space-y-6">
         <div className="space-y-5">
           <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">

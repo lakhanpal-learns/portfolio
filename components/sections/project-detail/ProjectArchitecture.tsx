@@ -11,7 +11,10 @@ export default function ProjectArchitecture({
   section,
 }: Props) {
   return (
-    <section className="border-t border-border pt-16">
+    <section
+          id={section.id}
+          className="border-t border-border pt-16"
+        >
       <div className="max-w-4xl space-y-5">
         <p className="text-sm font-medium uppercase tracking-wider text-muted-foreground">
           Architecture

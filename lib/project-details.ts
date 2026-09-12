@@ -1,7 +1,8 @@
 import { creditRiskDetails } from "@/content/project-details/credit-risk";
-
+import { customerChurnDetails } from "@/content/project-details/customer-churn";
 const projectDetails = {
   "credit-risk": creditRiskDetails,
+  "customer-churn": customerChurnDetails,
 };
 
 export function getProjectDetails(slug: string) {
