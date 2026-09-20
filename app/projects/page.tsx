@@ -1,5 +1,5 @@
 "use client";
-
+import AppLayout from "@/components/layout/AppLayout";
 import { useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
@@ -145,7 +145,8 @@ export default function ProjectsPage() {
   };
 
   return (
-    <main className="pb-20">
+    <AppLayout>
+    <main className="w-full pb-20">
       <div className="mx-auto w-full max-w-[1650px] px-8 lg:px-10 xl:px-12">
         <ProjectsHero />
 
@@ -160,7 +161,7 @@ export default function ProjectsPage() {
           totalProjects={filteredProjects.length}
         />
 
-       <ProjectsGrid
+        <ProjectsGrid
           projects={filteredProjects}
           clearFilters={clearFilters}
         />
@@ -168,5 +169,6 @@ export default function ProjectsPage() {
         <ProjectCTA />
       </div>
     </main>
+  </AppLayout>
   );
 }

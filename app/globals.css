@@ -149,3 +149,8 @@ html {
 .animate-pulse {
   animation: skeleton 1.4s ease-in-out infinite;
 }
+
+/* Global portfolio scale */
+body {
+  zoom: 0.5;
+}
