@@ -23,7 +23,7 @@ export const sqlAnalytics: Project = {
     "Interactive slicers and PivotCharts",
   ],
   technologies: ["Microsoft Excel", "PivotTables", "PivotCharts", "Excel Formulas", "Conditional Formatting"],
-  image: "/images/projects/sql-cover.png",
+  image: "/images/projects/global-job-tracker.svg",
   github: "https://github.com/lakhanpal-learns/Global-Data-Science-Job-Tracker",
   demo: "#",
   status: "Completed",
