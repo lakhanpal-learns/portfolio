@@ -86,16 +86,17 @@ export default function ProjectHero({
               <ArrowUpRight className="h-4 w-4" />
             </a>
 
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 text-white transition hover:opacity-90 dark:bg-white dark:text-black"
-            >
-              Live Demo
-
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+            {project.demo !== "#" && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-black px-6 py-3 text-white transition hover:opacity-90 dark:bg-white dark:text-black"
+              >
+                Live Demo
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            )}
           </div>
         </div>
 
