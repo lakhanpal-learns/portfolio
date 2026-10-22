@@ -23,7 +23,7 @@ export const customerChurn: Project = {
     "Merchant, customer, latency, and payment-failure analysis",
   ],
   technologies: ["Python", "Pandas", "NumPy", "PostgreSQL", "SQL", "Power BI", "DAX"],
-  image: "/images/projects/customer-churn-cover.png",
+  image: "/images/projects/digital-payments.svg",
   github: "https://github.com/lakhanpal-learns/digital-payments-fraud-risk-analytics-system",
   demo: "#",
   status: "Completed",
