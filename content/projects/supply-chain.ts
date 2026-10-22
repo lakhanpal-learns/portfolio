@@ -23,7 +23,7 @@ export const supplyChain: Project = {
     "Planned analytics-ready data modeling",
   ],
   technologies: ["ERPNext", "Python", "REST API", "PostgreSQL (planned)", "Docker", "SQL"],
-  image: "/images/projects/supply-chain-cover.png",
+  image: "/images/projects/supply-chain.svg",
   github: "https://github.com/lakhanpal-learns/supply-chain-intelligence-platform",
   demo: "#",
   status: "In Progress",
