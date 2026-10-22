@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import AppLayout from "@/components/layout/AppLayout";
 import { useMemo, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -10,7 +11,7 @@ import ProjectFilters from "@/components/sections/projects/ProjectFilters";
 import ProjectsGrid from "@/components/sections/projects/ProjectsGrid";
 import ProjectCTA from "@/components/sections/projects/ProjectCTA";
 
-export default function ProjectsPage() {
+function ProjectsPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -170,5 +171,23 @@ export default function ProjectsPage() {
       </div>
     </main>
   </AppLayout>
+  );
+}
+
+export default function ProjectsPage() {
+  return (
+    <Suspense
+      fallback={
+        <AppLayout>
+          <main className="w-full pb-20">
+            <div className="mx-auto w-full max-w-[1650px] px-8 py-10 lg:px-10 xl:px-12">
+              <p className="text-sm text-muted-foreground">Loading projects...</p>
+            </div>
+          </main>
+        </AppLayout>
+      }
+    >
+      <ProjectsPageContent />
+    </Suspense>
   );
 }
