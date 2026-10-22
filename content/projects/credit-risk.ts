@@ -23,7 +23,7 @@ export const creditRisk: Project = {
     "Validation of date sequences and record relationships",
   ],
   technologies: ["Python", "Pandas", "CSV", "PostgreSQL (planned)", "Power BI (planned)"],
-  image: "/images/projects/ChatGPT Image Jun 26, 2026, 01_09_58 PM.png",
+  image: "/images/projects/credit-risk.svg",
   github: "https://github.com/lakhanpal-learns/Credit-Risk-Analytics",
   demo: "#",
   status: "In Progress",
