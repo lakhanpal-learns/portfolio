@@ -23,7 +23,7 @@ export const uberPlatform: Project = {
     "Flask API and deployed dashboard integration",
   ],
   technologies: ["Microsoft Azure", "Azure Data Factory", "Event Hubs", "ADLS Gen2", "Databricks", "PySpark", "Delta Lake", "Power BI", "Flask", "Render"],
-  image: "/images/projects/supply-chain-cover.png",
+  image: "/images/projects/uber-platform.svg",
   github: "https://github.com/lakhanpal-learns/uber-data-engineering-platform",
   demo: "https://uber-data-engineering-platform.onrender.com/",
   status: "Completed",
