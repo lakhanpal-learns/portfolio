@@ -23,7 +23,7 @@ export const powerBiDashboard: Project = {
     "Processed dataset export to CSV",
   ],
   technologies: ["Python", "Pandas", "NumPy", "yfinance", "Streamlit", "Plotly"],
-  image: "/images/projects/powerbi-cover.png",
+  image: "/images/projects/stock-market-pipeline.svg",
   github: "https://github.com/lakhanpal-learns/stock-market-data-engineering-pipeline",
   demo: "#",
   status: "Completed",
