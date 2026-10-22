@@ -1,4 +1,9 @@
-export const customerChurnDetails = {
+import type { ProjectDetailSection } from "@/types/project-detail";
+
+export const customerChurnDetails: {
+  slug: string;
+  sections: ProjectDetailSection[];
+} = {
   slug: "customer-churn",
 
   sections: [
