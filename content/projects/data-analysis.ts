@@ -23,7 +23,7 @@ export const dataAnalysis: Project = {
     "Custom x-axis and y-axis chart selection",
   ],
   technologies: ["Python", "Streamlit", "Pandas", "Plotly"],
-  image: "/images/projects/powerbi-cover.png",
+  image: "/images/projects/stock-market-analysis.svg",
   github: "https://github.com/lakhanpal-learns/data-analysis-project",
   demo: "#",
   status: "In Progress",
