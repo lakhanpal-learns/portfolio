@@ -23,7 +23,7 @@ export const bankingPipeline: Project = {
     "Docker-based local infrastructure",
   ],
   technologies: ["Kafka", "Apache Spark", "Python", "dbt", "Docker", "SQL"],
-  image: "/images/projects/credit-risk-cover.png",
+  image: "/images/projects/banking-pipeline.svg",
   github: "https://github.com/lakhanpal-learns/End-to-End-Banking-Data-Engineering",
   demo: "#",
   status: "In Progress",
