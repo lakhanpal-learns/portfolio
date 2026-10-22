@@ -23,7 +23,7 @@ export const salesDashboard: Project = {
     "Order-status distribution and interactive slicers",
   ],
   technologies: ["Microsoft Excel", "PivotTables", "PivotCharts", "Excel Formulas", "Slicers"],
-  image: "/images/projects/sales-cover.png",
+  image: "/images/projects/vrinda-store-sales.svg",
   github: "https://github.com/lakhanpal-learns/Vrinda-Store-Sales-Analysis",
   demo: "#",
   status: "Completed",
