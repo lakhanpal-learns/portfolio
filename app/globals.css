@@ -150,3 +150,8 @@ html {
   animation: skeleton 1.4s ease-in-out infinite;
 }
 
+
+/* Experimental: reproduce the compact layout seen at Chrome 50% zoom. */
+body {
+  zoom: 0.5;
+}
